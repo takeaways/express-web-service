@@ -1,0 +1,24 @@
+{
+  "name": "express-web-service",
+  "version": "0.0.1",
+  "description": "express web service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nomadGeonilJang/express-web-service.git"
+  },
+  "author": "nomadGeonilJang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nomadGeonilJang/express-web-service/issues"
+  },
+  "homepage": "https://github.com/nomadGeonilJang/express-web-service#readme",
+  "dependencies": {
+    "mysql2": "^2.0.1",
+    "sequelize": "^5.21.2"
+  }
+}
