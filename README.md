@@ -61,3 +61,37 @@ console.log(jwt.verify(token, "helloworld"));
 
 </code>
 </pre>
+
+### CORS 브라우저에서 다른 origin 으로 요청을 보낼 때 발생.
+0) cross 도메인 요청을 보내면 OPTIONS 요청을 보낸다! 
+- Access-Controll-Allow-Origin 헤더를 응답 헤더에 넣어주면 된다.
+1) front to server : CORS
+2) server to server : ok
+3) npm i cors
+<pre>
+<code>
+// 응답 헤더에 Access-Controll-Allow-Origin를 넣어준다.
+const url = require('url');
+const cors = require('cors');
+
+
+app.use(cors()); // 모든경로 허용 '*';
+// 미들웨어 안에 미들웨어를 넣어 커스터 마이할 수 있다. cors()
+app.use(async (req, res, next) => {
+  const domain = await Domain.find({
+    where:{ host:url.parse(req.get('origin').host}
+  }) 
+  if(domain){
+    cors({
+      origin:req.get('origin')
+    })(req, res, next);
+  }else{
+    next();
+  }
+});
+
+
+
+
+</code>
+</pre>
